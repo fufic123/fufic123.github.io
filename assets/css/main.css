@@ -10,35 +10,71 @@
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
-/* Fonts */
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+/* Font Families */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Roboto", sans-serif;
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+
+  /* Light Mode Colors */
+  --background-color: #ffffff;
+  --default-color: #272829;
+  --heading-color: #050d18;
+  --accent-color: #149ddd;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+
+  /* Navigation Colors */
+  --nav-color: #a8a9b4;
+  --nav-hover-color: #ffffff;
+  --nav-mobile-background-color: #040b14;
+  --nav-dropdown-background-color: #040b14;
+  --nav-dropdown-color: #a8a9b4;
+  --nav-dropdown-hover-color: #ffffff;
+
+  scroll-behavior: smooth;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #272829; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #050d18; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --background-color: #040b14;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #151f2b;
+  --contrast-color: #ffffff;
+  --accent-color: #66d1ff;
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #a8a9b4;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #040b14; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #040b14; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #a8a9b4; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+/*--------------------------------------------------------------
+# Global Styles
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
 
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  transition: color 0.3s;
+}
+
+/* Light/Dark Background Classes */
 .light-background {
   --background-color: #f4fafd;
   --surface-color: #ffffff;
@@ -52,39 +88,230 @@
   --contrast-color: #ffffff;
 }
 
-/* Smooth scroll */
-:root {
-  scroll-behavior: smooth;
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+.navmenu {
+  background-color: var(--nav-mobile-background-color);
+}
+
+.navmenu a {
+  color: var(--nav-color);
+}
+
+.navmenu a:hover {
+  color: var(--nav-hover-color);
+}
+
+.navmenu .dropdown a {
+  background-color: var(--nav-dropdown-background-color);
+  color: var(--nav-dropdown-color);
+}
+
+.navmenu .dropdown a:hover {
+  color: var(--nav-dropdown-hover-color);
 }
 
 /*--------------------------------------------------------------
-# General Styling & Shared Classes
+# Skills Section
 --------------------------------------------------------------*/
-body {
-  color: var(--default-color);
-  background-color: var(--background-color);
-  font-family: var(--default-font);
+.skills .progress {
+  height: 60px;
+  display: block;
+  background: none;
+  border-radius: 0;
 }
 
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-a:hover {
-  color: color-mix(in srgb, var(--accent-color), transparent 25%);
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.skills .progress .skill {
   color: var(--heading-color);
-  font-family: var(--heading-font);
+  text-transform: uppercase;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.skills .progress .skill .val {
+  float: right;
+}
+
+.skills .progress-bar-wrap {
+  background: color-mix(in srgb, var(--default-color), transparent 90%);
+  height: 10px;
+}
+
+.skills .progress-bar {
+  width: 1px;
+  height: 10px;
+  transition: 0.9s;
+  background-color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+.portfolio .portfolio-content {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--surface-color);
+  transition: background-color 0.3s;
+}
+
+.portfolio .portfolio-content:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 10%);
+}
+
+.portfolio .portfolio-content img {
+  transition: transform 0.3s;
+}
+
+.portfolio .portfolio-content:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio .portfolio-info {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.portfolio .portfolio-content:hover .portfolio-info {
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-wrap {
+  background-color: var(--surface-color);
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact .info-item i {
+  font-size: 20px;
+  color: var(--accent-color);
+}
+
+.contact .php-email-form {
+  background-color: var(--surface-color);
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  background-color: var(--surface-color);
+  color: var(--default-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form button[type=submit] {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-radius: 50px;
+  padding: 10px 30px;
+  transition: background-color 0.3s;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+
+/*--------------------------------------------------------------
+# Footer Section
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color); /* Dynamic text color */
+  background-color: var(--background-color); /* Dynamic background color */
+  font-size: 14px;
+  padding: 40px 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+  color: var(--default-color); /* Dynamic text color */
+}
+
+.footer .credits {
+  margin-top: 4px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--default-color); /* Dynamic text color */
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services {
+  background-color: var(--background-color); /* Dynamic background color */
+  color: var(--default-color); /* Dynamic text color */
+}
+
+.services .service-item {
+  background-color: var(--surface-color); /* Dynamic surface color */
+  border-radius: 10px;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.services .service-item:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.services .service-item .icon {
+  background: var(--accent-color); /* Dynamic icon color */
+  color: var(--contrast-color); /* Dynamic contrast text color */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.services .service-item .icon:hover {
+  background: var(--surface-color); /* Surface color for hover */
+  color: var(--accent-color); /* Accent color for hover */
+}
+
+.services .service-item .title {
+  color: var(--heading-color); /* Dynamic heading color */
+}
+
+.services .service-item .description {
+  color: var(--default-color); /* Dynamic text color */
+}
+
+/*--------------------------------------------------------------
+# Skills Section
+--------------------------------------------------------------*/
+.skills {
+  background-color: var(--background-color) !important; /* Dynamic background color */
+  color: var(--default-color); /* Dynamic text color */
+}
+
+.skills .progress-bar-wrap {
+  background: color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.skills .progress-bar {
+  background-color: var(--accent-color); /* Dynamic progress bar color */
+  transition: width 0.9s ease-in-out;
+}
+
+.skills .progress .skill {
+  color: var(--heading-color); /* Dynamic skill text color */
+}
+
+.skills .progress .skill .val {
+  color: var(--default-color); /* Dynamic percentage value color */
 }
 
 /* PHP Email Form Messages
@@ -147,8 +374,8 @@ h6 {
 --------------------------------------------------------------*/
 .header {
   overflow-y: hidden !important;
-  color: var(--default-color);
-  background-color: var(--background-color);
+  color: #fff !important;
+  background-color: #040b14;
   position: fixed;
   top: 0;
   left: 0;
@@ -186,7 +413,7 @@ h6 {
   font-size: 24px;
   margin: 0;
   font-weight: 700;
-  color: var(--heading-color);
+  color: #fff;
 }
 
 .header .social-links {
@@ -198,8 +425,8 @@ h6 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--default-color), transparent 90%);
-  color: var(--default-color);
+  background: color-mix(in srgb, #fff, transparent 90%);
+  color: #fff;
   margin: 0 2px;
   border-radius: 50%;
   text-align: center;
