@@ -601,25 +601,25 @@
 
             <div class="col-md-6">
               <label for="name-field" class="pb-2">Your Name</label>
-              <input type="text" name="name" id="name-field" class="form-control" placeholder="Enter your name" required="">
+              <input type="text" name="name" id="name-field" class="form-control" placeholder="Enter your name" required>
               <div class="invalid-feedback" style="display: none;">Name can only contain letters and spaces.</div>
             </div>
 
             <div class="col-md-6">
               <label for="email-field" class="pb-2">Your Email</label>
-              <input type="email" class="form-control" name="email" id="email-field" placeholder="Enter your email" required="">
+              <input type="email" class="form-control" name="email" id="email-field" placeholder="Enter your email" required>
               <div class="invalid-feedback" style="display: none;">Please enter a valid email address.</div>
             </div>
 
             <div class="col-md-12">
               <label for="subject-field" class="pb-2">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject-field" placeholder="Enter subject" required="">
+              <input type="text" class="form-control" name="subject" id="subject-field" placeholder="Enter subject" required>
               <div class="invalid-feedback" style="display: none;">Please enter the subject.</div>
             </div>
 
             <div class="col-md-12">
               <label for="message-field" class="pb-2">Message</label>
-              <textarea class="form-control" name="message" rows="10" id="message-field" placeholder="Write your message here" required=""></textarea>
+              <textarea class="form-control" name="message" rows="10" id="message-field" placeholder="Write your message here" required></textarea>
               <div class="invalid-feedback" style="display: none;">Please write your message.</div>
             </div>
 
@@ -627,15 +627,15 @@
               <div class="loading" style="display: none;">Loading...</div>
               <div class="sent-message" style="display: none;">Your message has been sent. Thank you!</div>
 
-              <button type="submit">Send Message</button>
+              <button type="submit">Send Message</button>  
+              <a id="open-large-form" class="ms-auto" style="cursor: pointer;">Open detailed form</a>
+
             </div>
 
           </div>
         </form>
       </div><!-- End Contact Form -->
-
     </div>
-
   </div>
 
 </section><!-- /Contact Section -->
@@ -687,6 +687,78 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for Full Form -->
+<div id="fullFormModal" class="modal fade" tabindex="-1" aria-labelledby="fullFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="fullFormModalLabel">Consulatation form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="large-form" novalidate>
+          <div class="row gy-4">
+            <div class="col-md-6">
+              <label for="large-name" class="pb-2">Your Name</label>
+              <input type="text" id="large-name" class="form-control" placeholder="Name" required>
+            </div>
+            <div class="col-md-6">
+              <label for="large-surname" class="pb-2">Surname</label>
+              <input type="text" id="large-surname" class="form-control" placeholder="Surname" required>
+            </div>
+            <div class="col-md-6">
+              <label for="large-email" class="pb-2">Email</label>
+              <input type="email" id="large-email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="col-md-6">
+              <label for="large-phone" class="pb-2">Phone</label>
+              <input type="text" id="large-phone" class="form-control" placeholder="Phone Number" required>
+            </div>
+            <div class="col-md-12">
+              <label for="large-address" class="pb-2">Address</label>
+              <input type="text" id="large-address" class="form-control" placeholder="Address" required>
+            </div>
+
+            <!-- Numerical Values -->
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-4 pb-2">
+                  <input type="number" id="num1" class="form-control" placeholder="Notice days" required>
+                </div>
+                <div class="col-4">
+                  <input type="number" id="num2" class="form-control" placeholder="Deadline in month" required>
+                </div>
+                <div class="col-4">
+                  <input type="number" id="num3" class="form-control" placeholder="Min expected users" required>
+                </div>
+                <div class="col-4">
+                  <input type="number" id="num3" class="form-control" placeholder="Max expected users" required>
+                </div>
+                <div class="col-4">
+                  <input type="number" id="num4" class="form-control" placeholder="Min Budget" required>
+                </div>
+                <div class="col-4">
+                  <input type="number" id="num5" class="form-control" placeholder="Max Budget" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <button type="submit" style="    color: var(--contrast-color);
+            background: var(--accent-color);
+            border: 0;
+            padding: 10px 30px;
+            transition: 0.4s;
+            border-radius: 50px;">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

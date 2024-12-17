@@ -776,6 +776,13 @@ section,
 .section-title p {
   margin-bottom: 0;
 }
+.is-invalid {
+  border-color: #dc3545;
+}
+.is-invalid:focus {
+  box-shadow: 0 0 5px #dc3545;
+}
+
 
 /*--------------------------------------------------------------
 # Hero Section
