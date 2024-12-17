@@ -227,3 +227,107 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+
+
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent default form submission behavior
+
+  const form = event.target;
+  let isValid = true;
+
+  // Reset validation feedback
+  form.querySelectorAll(".invalid-feedback").forEach((feedback) => {
+    feedback.style.display = "none";
+  });
+
+  // Validate name (letters and spaces only)
+  const nameField = form.querySelector("#name-field");
+  const namePattern = /^[A-Za-z\s]+$/;
+  if (!namePattern.test(nameField.value.trim())) {
+    isValid = false;
+    nameField.nextElementSibling.style.display = "block";
+  }
+
+  // Validate email
+  const emailField = form.querySelector("#email-field");
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(emailField.value.trim())) {
+    isValid = false;
+    emailField.nextElementSibling.style.display = "block";
+  }
+
+  // Validate other required fields
+  form.querySelectorAll("[required]").forEach((field) => {
+    if (!field.value.trim()) {
+      isValid = false;
+      field.nextElementSibling.style.display = "block";
+    }
+  });
+
+  if (isValid) {
+    // Hide error messages
+    form.querySelectorAll(".invalid-feedback").forEach((feedback) => {
+      feedback.style.display = "none";
+    });
+
+    // Display success message
+    const successMessage = form.querySelector(".sent-message");
+    successMessage.style.display = "block";
+
+    // Clear form fields
+    form.reset();
+
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      successMessage.style.display = "none";
+    }, 3000);
+  }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("theme-toggle");
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+
+  // Update button text and classes on load
+  if (savedTheme === "dark") {
+    toggleButton.textContent = "Light Mode";
+    updateBackgroundClasses("dark");
+  } else {
+    toggleButton.textContent = "Dark Mode";
+    updateBackgroundClasses("light");
+  }
+
+  // Toggle theme
+  toggleButton.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    toggleButton.textContent = newTheme === "light" ? "Dark Mode" : "Light Mode";
+
+    updateBackgroundClasses(newTheme);
+  });
+
+  // Function to update .light-background and .dark-background classes
+  function updateBackgroundClasses(theme) {
+    const elements = document.querySelectorAll(".light-background, .dark-background");
+    elements.forEach((element) => {
+      if (theme === "dark") {
+        element.classList.add("dark-background");
+        element.classList.remove("light-background");
+      } else {
+        element.classList.add("light-background");
+        element.classList.remove("dark-background");
+      }
+    });
+  }
+});

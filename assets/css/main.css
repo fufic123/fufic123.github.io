@@ -35,6 +35,8 @@
   --nav-dropdown-color: #a8a9b4;
   --nav-dropdown-hover-color: #ffffff;
 
+  --modal-bg: #fff;
+
   scroll-behavior: smooth;
 }
 
@@ -46,6 +48,7 @@
   --surface-color: #151f2b;
   --contrast-color: #ffffff;
   --accent-color: #66d1ff;
+  --modal-bg: #040b14;
 }
 
 /*--------------------------------------------------------------
@@ -367,7 +370,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #about a {
   text-decoration: none;
-  color: #000;
+  color: var(--default-color);
 }
 /*--------------------------------------------------------------
 # Global Header
@@ -661,7 +664,7 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
   opacity: 0;
   right: 15px;
-  bottom: -15px;
+  bottom: 15px;
   z-index: 99999;
   background-color: var(--accent-color);
   width: 44px;

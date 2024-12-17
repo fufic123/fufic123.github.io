@@ -9,7 +9,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon.svg" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -27,13 +27,10 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
 </head>
 
 <body class="index-page">
@@ -66,6 +63,12 @@
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        <li>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#mathModal">
+            <i class="bi bi-calculator navicon"></i> MATH
+          </a>
+        </li>
+        
       </ul>
 
       <div class="theme-toggle-container text-center">
@@ -589,6 +592,8 @@
         </div>
       </div><!-- End Contact Details -->
 
+      
+
       <!-- Contact Form -->
       <div class="col-lg-7">
         <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="200" novalidate>
@@ -635,64 +640,6 @@
 
 </section><!-- /Contact Section -->
 
-<script>
-  document.getElementById("contact-form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission behavior
-
-    const form = event.target;
-    let isValid = true;
-
-    // Reset validation feedback
-    form.querySelectorAll(".invalid-feedback").forEach((feedback) => {
-      feedback.style.display = "none";
-    });
-
-    // Validate name (letters and spaces only)
-    const nameField = form.querySelector("#name-field");
-    const namePattern = /^[A-Za-z\s]+$/;
-    if (!namePattern.test(nameField.value.trim())) {
-      isValid = false;
-      nameField.nextElementSibling.style.display = "block";
-    }
-
-    // Validate email
-    const emailField = form.querySelector("#email-field");
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(emailField.value.trim())) {
-      isValid = false;
-      emailField.nextElementSibling.style.display = "block";
-    }
-
-    // Validate other required fields
-    form.querySelectorAll("[required]").forEach((field) => {
-      if (!field.value.trim()) {
-        isValid = false;
-        field.nextElementSibling.style.display = "block";
-      }
-    });
-
-    if (isValid) {
-      // Hide error messages
-      form.querySelectorAll(".invalid-feedback").forEach((feedback) => {
-        feedback.style.display = "none";
-      });
-
-      // Display success message
-      const successMessage = form.querySelector(".sent-message");
-      successMessage.style.display = "block";
-
-      // Clear form fields
-      form.reset();
-
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        successMessage.style.display = "none";
-      }, 3000);
-    }
-  });
-</script>
-
-
 
   </main>
 
@@ -713,9 +660,88 @@
 
   </footer>
 
+
+
+
+  <!-- Math Modal -->
+<div class="modal fade" id="mathModal" tabindex="-1" aria-labelledby="mathModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content light-background" style="background-color: var(--modal-bg);">
+      <div class="modal-header">
+        <h5 class="modal-title" id="mathModalLabel">Solved Function</h5>
+      </div>
+      <div class="modal-body text-center">
+        <p>
+          <strong>1. Cauchy Integral Formula:</strong><br>
+          \( f(a) = \frac{1}{2\pi i} \oint \frac{f(z)}{z - a} \, dz \)
+        </p>
+        <p>
+          <strong>2. Standard Deviation:</strong><br>
+          \( \sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2} \)
+        </p>
+        <p>
+          <strong>3. Divergence Theorem:</strong><br>
+          \( \int_D (\nabla \cdot F) \, dV = \oint_{\partial D} F \cdot n \, dS \)
+        </p>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   <!-- Scroll Top -->
+  <div id="clock" class="clock"></div>
+
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+
+<script>
+  function updateClock() {
+    const now = new Date();
+
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    document.getElementById("clock").textContent = `${hours}:${minutes}:${seconds}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock(); 
+</script>
+
+<style>
+  .clock {
+    position: fixed;
+    bottom: 15px; 
+    right: 70px;
+    width: 100px;
+    height: 42px;
+    background-color: var(--accent-color); 
+    color: #fff; 
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px; 
+    border-radius: 10px; 
+    z-index: 9999;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
+
+ 
+  .clock:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  }
+</style>
+
+  
   <!-- Preloader -->
   <div id="preloader"></div>
 
@@ -735,52 +761,6 @@
   <script src="assets/js/main.js"></script>
   
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleButton = document.getElementById("theme-toggle");
-  
-      // Load saved theme
-      const savedTheme = localStorage.getItem("theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-  
-      // Update button text and classes on load
-      if (savedTheme === "dark") {
-        toggleButton.textContent = "Light Mode";
-        updateBackgroundClasses("dark");
-      } else {
-        toggleButton.textContent = "Dark Mode";
-        updateBackgroundClasses("light");
-      }
-  
-      // Toggle theme
-      toggleButton.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "light" ? "dark" : "light";
-  
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-  
-        toggleButton.textContent = newTheme === "light" ? "Dark Mode" : "Light Mode";
-  
-        updateBackgroundClasses(newTheme);
-      });
-  
-      // Function to update .light-background and .dark-background classes
-      function updateBackgroundClasses(theme) {
-        const elements = document.querySelectorAll(".light-background, .dark-background");
-        elements.forEach((element) => {
-          if (theme === "dark") {
-            element.classList.add("dark-background");
-            element.classList.remove("light-background");
-          } else {
-            element.classList.add("light-background");
-            element.classList.remove("dark-background");
-          }
-        });
-      }
-    });
-  </script>
-  
 </body>
 
 </html>
