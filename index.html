@@ -705,7 +705,7 @@
         <form id="large-form" novalidate>
           <div class="row gy-4">
             <div class="col-md-6">
-              <label for="large-name" class="pb-2">Your Name</label>
+              <label for="large-name" class="pb-2">Name</label>
               <input type="text" id="large-name" class="form-control" placeholder="Name" required>
             </div>
             <div class="col-md-6">
@@ -831,8 +831,39 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/form-validation.js"></script>
   
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const openLargeFormBtn = document.getElementById("open-large-form");
+  const fullFormModal = document.getElementById("fullFormModal");
 
+  if (openLargeFormBtn && fullFormModal) {
+    const modal = new bootstrap.Modal(fullFormModal);
+
+    openLargeFormBtn.addEventListener("click", () => {
+      // Load saved form data when opening the modal
+      const formData = JSON.parse(sessionStorage.getItem("large-form") || "{}");
+      Object.entries(formData).forEach(([key, value]) => {
+        const input = document.getElementById(key);
+        if (input) input.value = value;
+      });
+
+      // Show the Bootstrap modal
+      modal.show();
+    });
+
+    fullFormModal.addEventListener("hidden.bs.modal", () => {
+      // Clear form errors when modal is closed
+      document.querySelectorAll("#large-form .is-invalid").forEach(input => {
+        input.classList.remove("is-invalid");
+      });
+    });
+  }
+});
+
+  </script>
 </body>
 
 </html>

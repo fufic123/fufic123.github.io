@@ -777,10 +777,10 @@ section,
   margin-bottom: 0;
 }
 .is-invalid {
-  border-color: #dc3545;
+  border-color: #dc3545 !important;
 }
 .is-invalid:focus {
-  box-shadow: 0 0 5px #dc3545;
+  box-shadow: 0 0 5px #dc3545 !important;
 }
 
 
